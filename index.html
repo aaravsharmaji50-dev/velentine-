@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For My Cutie 💝</title>
 <style>
+/* ====== BASE ====== */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 body{background:linear-gradient(135deg,#ff4b6e,#ff8fb3,#ffd1dc);color:white;overflow-x:hidden;min-height:100vh;text-align:center;position:relative;}
 .container{max-width:900px;margin:auto;padding:25px;position:relative;z-index:5;}
@@ -34,7 +35,6 @@ input{padding:12px;width:80%;border-radius:12px;border:none;font-size:16px;margi
 .big-love{font-size:20px;font-weight:bold;margin-top:20px;text-shadow:0 0 15px rgba(255,255,255,0.5);}
 .final-heart{font-size:45px;margin-top:20px;animation:beat 1s infinite;}
 @keyframes beat{0%,100%{transform:scale(1);}50%{transform:scale(1.2);}}
-/* Confetti */
 .confetti{position:fixed;width:10px;height:10px;background:rgba(255,255,255,0.8);top:0;z-index:9999;pointer-events:none;}
 </style>
 </head>
@@ -42,7 +42,7 @@ input{padding:12px;width:80%;border-radius:12px;border:none;font-size:16px;margi
 
 <!-- Background Music -->
 <audio id="bgMusic" autoplay loop>
-<source src="midnightcall.mp3.mpeg" type="audio/mpeg">
+<source src="midnightcall.mp3" type="audio/mpeg">
 </audio>
 
 <div class="container">
@@ -77,10 +77,10 @@ input{padding:12px;width:80%;border-radius:12px;border:none;font-size:16px;margi
 <h2>📸 Our Cute Photos 💞</h2>
 <img src="stickers_hug.gif" class="sticker">
 <div class="gallery">
-<img src="photos1.jpg.jpeg">
-<img src="photos2.jpg.jpeg">
-<img src="photos3.jpg.jpeg">
-<img src="photos4.jpg.jpeg">
+<img src="photos1.jpg">
+<img src="photos2.jpg">
+<img src="photos3.jpg">
+<img src="photos4.jpg">
 </div>
 </div>
 
@@ -93,35 +93,35 @@ input{padding:12px;width:80%;border-radius:12px;border:none;font-size:16px;margi
 
 <div class="flip-card" onclick="flipCard(this,0)">
 <div class="flip-card-inner">
-<div class="flip-card-front"><img src="chats1.jpg.jpeg"></div>
+<div class="flip-card-front"><img src="chats1.jpg"></div>
 <div class="flip-card-back"><img src="stickers_blush.gif" class="sticker"><p></p></div>
 </div>
 </div>
 
 <div class="flip-card" onclick="flipCard(this,1)">
 <div class="flip-card-inner">
-<div class="flip-card-front"><img src="chats2.jpg.jpeg"></div>
+<div class="flip-card-front"><img src="chats2.jpg"></div>
 <div class="flip-card-back"><img src="stickers_love.gif" class="sticker"><p></p></div>
 </div>
 </div>
 
 <div class="flip-card" onclick="flipCard(this,2)">
 <div class="flip-card-inner">
-<div class="flip-card-front"><img src="chats3.jpg.jpeg"></div>
+<div class="flip-card-front"><img src="chats3.jpg"></div>
 <div class="flip-card-back"><img src="stickers_hug.gif" class="sticker"><p></p></div>
 </div>
 </div>
 
 <div class="flip-card" onclick="flipCard(this,3)">
 <div class="flip-card-inner">
-<div class="flip-card-front"><img src="chats4.jpg.jpeg"></div>
+<div class="flip-card-front"><img src="chats4.jpg"></div>
 <div class="flip-card-back"><img src="stickers_kiss.gif" class="sticker"><p></p></div>
 </div>
 </div>
 
 <div class="flip-card" onclick="flipCard(this,4)">
 <div class="flip-card-inner">
-<div class="flip-card-front"><img src="chats5.jpg.jpeg"></div>
+<div class="flip-card-front"><img src="chats5.jpg"></div>
 <div class="flip-card-back"><img src="stickers_cry.gif" class="sticker"><p></p></div>
 </div>
 </div>
@@ -160,18 +160,21 @@ input{padding:12px;width:80%;border-radius:12px;border:none;font-size:16px;margi
 </div>
 
 <script>
+/* ====== PASSWORD LOGIN ====== */
 let password="0109";
 function checkPassword(){
-let input=document.getElementById("passwordInput").value;
-if(input===password){
-document.getElementById("loginPage").classList.add("hidden");
-document.getElementById("mainPage").classList.remove("hidden");
-document.getElementById("bgMusic").play().catch(()=>{});
-}else{
-document.getElementById("errorMsg").innerText="Wrong password cutie 😭💔 try again!";
-}
+  let input=document.getElementById("passwordInput").value;
+  if(input===password){
+    document.getElementById("loginPage").classList.add("hidden");
+    document.getElementById("mainPage").classList.remove("hidden");
+    let bg = document.getElementById("bgMusic");
+    bg.play().catch(()=>{});
+  }else{
+    document.getElementById("errorMsg").innerText="Wrong password cutie 😭💔 try again!";
+  }
 }
 
+/* ====== CHAT FLIP ====== */
 const chatBackMessages=[
 "Ye birthday me whole life ka happiest birthday he aur apka pyaar se muje bchha bolna. Ufffffff kya hi bolu me 🥹✨💝💕🌺💗",
 "Jb aapne ye bola th tb me khud ko sbse secure bf maan rha th 🥹✨💗 muje esa lg rha th ki kisi ke liye to me priority hoo 🫂💗✨",
@@ -179,27 +182,26 @@ const chatBackMessages=[
 "Yha se hmari jorny start hue thi me bht jada khush nseeb ho jo muje aap jesi loyal cute or caring gf mili h plz kbhi chhor ke mt jana muje ...🥺🫂💗❤️‍🩹",
 "Yha muje phli baar lga th ki mere effort apko khush krte h jitna syd me apko chahta ho syd aap b muje otna hi chahte ho 🫂🎀🥀💝"
 ];
-
 function flipCard(card,index){
-card.classList.toggle("flipped");
-const backMsg = card.querySelector(".flip-card-back p");
-if(card.classList.contains("flipped")) backMsg.innerText = chatBackMessages[index];
-else backMsg.innerText="";
+  card.classList.toggle("flipped");
+  const backMsg = card.querySelector(".flip-card-back p");
+  if(card.classList.contains("flipped")) backMsg.innerText = chatBackMessages[index];
+  else backMsg.innerText="";
 }
 
-// Heart animation
+/* ====== HEART ANIMATION ====== */
 function createHearts(){
-const heart=document.createElement("div");
-heart.classList.add("heart"); heart.innerHTML="💖";
-heart.style.left=Math.random()*100+"vw";
-heart.style.animationDuration=(Math.random()*3+3)+"s";
-heart.style.fontSize=(Math.random()*15+15)+"px";
-document.body.appendChild(heart);
-setTimeout(()=>heart.remove(),6000);
+  const heart=document.createElement("div");
+  heart.classList.add("heart"); heart.innerHTML="💖";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.animationDuration=(Math.random()*3+3)+"s";
+  heart.style.fontSize=(Math.random()*15+15)+"px";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),6000);
 }
 setInterval(createHearts,300);
 
-// Story Timeline
+/* ====== STORY TIMELINE ====== */
 let storySteps=[
 "💝 First Talk (25 August): Hum ek anjaan GC me mile the... na tum mujhe jaanti thi, na main tumhe 😅",
 "💌 First Propose (28 August): Maine propose kiya... but I failed 😭",
@@ -210,33 +212,35 @@ let storySteps=[
 "💘 Aur ab... chahe long distance ho... tum meri rooh me ho Cutie 💗🌍✨"
 ];
 let currentStory=0;
-document.getElementById("storyText").innerText=storySteps[currentStory];
+function openPopup(id){
+  document.getElementById(id).classList.remove("hidden");
+  document.getElementById("storyText").innerText = storySteps[currentStory];
+}
+function closePopup(id){
+  document.getElementById(id).classList.add("hidden");
+}
 function nextStory(){
-currentStory++;
-if(currentStory>=storySteps.length)currentStory=0;
-document.getElementById("storyText").innerText=storySteps[currentStory];
+  currentStory++;
+  if(currentStory>=storySteps.length) currentStory = 0;
+  document.getElementById("storyText").innerText = storySteps[currentStory];
 }
 
-function openPopup(id){document.getElementById(id).classList.remove("hidden");}
-function closePopup(id){document.getElementById(id).classList.add("hidden");}
-
-// Valentine YES/NO + Confetti
+/* ====== VALENTINE YES/NO + CONFETTI ====== */
 let noCount=0;
 function yesClicked(){
-document.getElementById("valMsg").innerHTML="😭💝 YAYYYYYY!!! My Cutie said YES!! <br> I love you forever 💗✨<br> Tum meri duniya ho 🥺💘";
-let sticker=document.getElementById("valSticker");sticker.src="stickers_hug.gif";sticker.classList.remove("hidden");
-confettiBurst();
+  document.getElementById("valMsg").innerHTML="😭💝 YAYYYYYY!!! My Cutie said YES!! <br> I love you forever 💗✨<br> Tum meri duniya ho 🥺💘";
+  let sticker=document.getElementById("valSticker");sticker.src="stickers_hug.gif";sticker.classList.remove("hidden");
+  confettiBurst();
 }
 function noClicked(){
-noCount++;
-let msg=""; let sticker=document.getElementById("valSticker");
-if(noCount===1){msg="🥺 Please yes krdo na cutie 💗"; sticker.src="stickers_cry.gif";}
-else if(noCount===2){msg="😭 Mera dil mat todo cutie 💔"; sticker.src="stickers_cry.gif";}
-else{msg="😭😭 Mar jaunga apke binaaaaa 💔💔 (ab YES krdo naaaaa)"; sticker.src="stickers_cry.gif";}
-document.getElementById("valMsg").innerText=msg;sticker.classList.remove("hidden");
+  noCount++;
+  let msg=""; let sticker=document.getElementById("valSticker");
+  if(noCount===1){msg="🥺 Please yes krdo na cutie 💗"; sticker.src="stickers_cry.gif";}
+  else if(noCount===2){msg="😭 Mera dil mat todo cutie 💔"; sticker.src="stickers_cry.gif";}
+  else{msg="😭😭 Mar jaunga apke binaaaaa 💔💔 (ab YES krdo naaaaa)"; sticker.src="stickers_cry.gif";}
+  document.getElementById("valMsg").innerText=msg;sticker.classList.remove("hidden");
 }
-
-// Confetti effect
+/* ====== CONFETTI ====== */
 function confettiBurst(){
 for(let i=0;i<150;i++){
 let c=document.createElement("div");c.classList.add("confetti");
@@ -248,7 +252,6 @@ c.animate([{transform:`translateY(0px)`},{transform:`translateY(${window.innerHe
 setTimeout(()=>c.remove(),fallTime*1000);
 }
 }
-
 </script>
 </body>
 </html>
