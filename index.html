@@ -1,62 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>For My Cutie 💝</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body {
-      background: linear-gradient(135deg, #ff4b6e, #ff8fb3, #ffd1dc);
-      color: white;
-      overflow-x: hidden;
-      min-height: 100vh;
-      text-align: center;
-    }
-    .container { max-width: 900px; margin: auto; padding: 25px; position: relative; z-index:5; }
-    h1,h2 { margin-bottom: 15px; text-shadow:0 0 10px rgba(255,255,255,0.4); }
-    p { font-size: 17px; line-height: 1.6; margin-bottom: 15px; }
-    .btn {
-      padding: 12px 22px; background:white; color:#ff2f5d; border:none; border-radius:12px;
-      font-size:16px; cursor:pointer; margin:12px; font-weight:bold; transition:0.3s;
-      box-shadow:0 0 15px rgba(255,255,255,0.5);
-    }
-    .btn:hover { transform: scale(1.08); }
-    .card {
-      background: rgba(255,255,255,0.18); border-radius:18px; padding:20px; margin:20px 0;
-      backdrop-filter: blur(10px); box-shadow: 0 0 20px rgba(0,0,0,0.15);
-    }
-    .hidden { display: none; }
-    .heart { position: fixed; bottom:-10px; font-size:20px; animation: floatUp 6s linear infinite; opacity:0.8; z-index:1; }
-    @keyframes floatUp { 0% { transform: translateY(0) scale(1); opacity:1; } 100% { transform: translateY(-110vh) scale(1.8); opacity:0; } }
-    .gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:15px; margin-top:15px; }
-    .gallery img { width:100%; border-radius:15px; box-shadow:0 0 15px rgba(255,255,255,0.35); transition:0.3s; cursor:pointer; }
-    .gallery img:hover { transform: scale(1.05) rotate(2deg); box-shadow:0 0 25px rgba(255,255,255,0.6); }
-    .flip-card { background:transparent; width:100%; height:220px; perspective:1000px; cursor:pointer; }
-    .flip-card-inner { position:relative; width:100%; height:100%; text-align:center; transition:transform 0.8s; transform-style:preserve-3d; }
-    .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
-    .flip-card-front, .flip-card-back {
-      position:absolute; width:100%; height:100%; backface-visibility:hidden; border-radius:15px;
-      overflow:hidden; display:flex; align-items:center; justify-content:center; flex-direction:column; padding:10px;
-    }
-    .flip-card-front { background: rgba(255,255,255,0.18); box-shadow:0 0 20px rgba(255,255,255,0.25); }
-    .flip-card-front img { width:100%; height:100%; object-fit:cover; }
-    .flip-card-back { background: rgba(0,0,0,0.25); transform:rotateY(180deg); font-size:16px; }
-    .sticker { width:90px; margin:10px auto; display:block; }
-    .popup { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.55);
-      display:flex; justify-content:center; align-items:center; z-index:999; padding:20px; }
-    .popup-content { background: rgba(255,255,255,0.2); padding:25px; border-radius:20px; max-width:500px; width:100%;
-      backdrop-filter: blur(10px); box-shadow:0 0 25px rgba(255,255,255,0.25); animation: pop 0.4s ease; }
-    @keyframes pop { 0% { transform: scale(0.7); opacity:0; } 100% { transform: scale(1); opacity:1; } }
-    input { padding:12px; width:80%; border-radius:12px; border:none; font-size:16px; margin-top:15px; text-align:center; outline:none; }
-    .big-love { font-size:20px; font-weight:bold; margin-top:20px; text-shadow:0 0 15px rgba(255,255,255,0.5); }
-    .final-heart { font-size:45px; margin-top:20px; animation: beat 1s infinite; }
-    @keyframes beat { 0%,100%{ transform: scale(1); } 50%{ transform: scale(1.2); } }
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+    body{background:linear-gradient(135deg,#ff4b6e,#ff8fb3,#ffd1dc);color:white;overflow-x:hidden;min-height:100vh;text-align:center;}
+    .container{max-width:900px;margin:auto;padding:25px;position:relative;z-index:5;}
+    h1,h2{margin-bottom:15px;text-shadow:0 0 10px rgba(255,255,255,0.4);}
+    p{font-size:17px;line-height:1.6;margin-bottom:15px;}
+    .btn{padding:12px 22px;background:white;color:#ff2f5d;border:none;border-radius:12px;font-size:16px;cursor:pointer;margin:12px;font-weight:bold;transition:0.3s;box-shadow:0 0 15px rgba(255,255,255,0.5);}
+    .btn:hover{transform:scale(1.08);}
+    .card{background:rgba(255,255,255,0.18);border-radius:18px;padding:20px;margin:20px 0;backdrop-filter:blur(10px);box-shadow:0 0 20px rgba(0,0,0,0.15);}
+    .hidden{display:none;}
+    .heart{position:fixed;bottom:-10px;font-size:20px;animation:floatUp 6s linear infinite;opacity:0.8;z-index:1;}
+    @keyframes floatUp{0%{transform:translateY(0) scale(1);opacity:1;}100%{transform:translateY(-110vh) scale(1.8);opacity:0;}}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px;margin-top:15px;}
+    .gallery img{width:100%;border-radius:15px;box-shadow:0 0 15px rgba(255,255,255,0.35);transition:0.3s;cursor:pointer;}
+    .gallery img:hover{transform:scale(1.05) rotate(2deg);box-shadow:0 0 25px rgba(255,255,255,0.6);}
+    .flip-card{background:transparent;width:100%;height:220px;perspective:1000px;cursor:pointer;}
+    .flip-card-inner{position:relative;width:100%;height:100%;text-align:center;transition:transform 0.8s;transform-style:preserve-3d;}
+    .flip-card.flipped .flip-card-inner{transform:rotateY(180deg);}
+    .flip-card-front, .flip-card-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:15px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:10px;}
+    .flip-card-front{background:rgba(255,255,255,0.18);box-shadow:0 0 20px rgba(255,255,255,0.25);}
+    .flip-card-front img{width:100%;height:100%;object-fit:cover;}
+    .flip-card-back{background:rgba(0,0,0,0.25);transform:rotateY(180deg);font-size:16px;}
+    .sticker{width:90px;margin:10px auto;display:block;}
+    .popup{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.55);display:flex;justify-content:center;align-items:center;z-index:999;padding:20px;}
+    .popup-content{background:rgba(255,255,255,0.2);padding:25px;border-radius:20px;max-width:500px;width:100%;backdrop-filter:blur(10px);box-shadow:0 0 25px rgba(255,255,255,0.25);animation:pop 0.4s ease;}
+    @keyframes pop{0%{transform:scale(0.7);opacity:0;}100%{transform:scale(1);opacity:1;}}
+    input{padding:12px;width:80%;border-radius:12px;border:none;font-size:16px;margin-top:15px;text-align:center;outline:none;}
+    .big-love{font-size:20px;font-weight:bold;margin-top:20px;text-shadow:0 0 15px rgba(255,255,255,0.5);}
+    .final-heart{font-size:45px;margin-top:20px;animation:beat 1s infinite;}
+    @keyframes beat{0%,100%{transform:scale(1);}50%{transform:scale(1.2);}}
   </style>
 </head>
 <body>
 
-  <audio id="bgMusic" loop>
+  <audio id="bgMusic" autoplay loop>
     <source src="midnightcall.mp3" type="audio/mpeg">
   </audio>
 
@@ -138,7 +120,7 @@
         </div>
       </div>
 
-      <!-- FINAL HEARTFELT MESSAGE -->
+      <!-- LAST MESSAGE PAGE -->
       <div class="card">
         <h2>💌 My Last Message for You 💌</h2>
         <img src="stickers_blush.gif" class="sticker">
@@ -146,7 +128,6 @@
         <p>Aur aage… <b>mera pyar, mera support, meri loyalty hamesha aapke sath rahegi 💝</b></p>
         <p class="big-love">Meri cutie ke liye, hamesha 💖🥹</p>
         <div class="final-heart">❤️</div>
-        <button class="btn" onclick="alert('Mera pyaar hamesha tumhare sath hai 💗');">😘 Got It Cutie</button>
       </div>
 
     </div>
@@ -164,20 +145,16 @@
   </div>
 
   <script>
-    // Password check
-    let password = "0109";
+    let password="0109";
     function checkPassword(){
-      let input = document.getElementById("passwordInput").value;
+      let input=document.getElementById("passwordInput").value;
       if(input===password){
         document.getElementById("loginPage").classList.add("hidden");
         document.getElementById("mainPage").classList.remove("hidden");
         document.getElementById("bgMusic").play().catch(()=>{});
-      } else {
-        document.getElementById("errorMsg").innerText="Wrong password cutie 😭💔 try again!";
-      }
+      } else { document.getElementById("errorMsg").innerText="Wrong password cutie 😭💔 try again!"; }
     }
 
-    // Chat messages
     const chatBackMessages=[
       "Ye birthday me whole life ka happiest birthday he aur apka pyaar se muje bchha bolna. Ufffffff kya hi bolu me 🥹✨💝💕🌺💗",
       "Jb aapne ye bola th tb me khud ko sbse secure bf maan rha th 🥹✨💗 muje esa lg rha th ki kisi ke liye to me priority hoo 🫂💗✨",
@@ -189,11 +166,10 @@
     function flipCard(card,index){
       card.classList.toggle("flipped");
       const backMsg = card.querySelector(".flip-card-back p");
-      if(card.classList.contains("flipped")) backMsg.innerText = chatBackMessages[index] + " 💖";
-      else backMsg.innerText = chatBackMessages[index];
+      if(card.classList.contains("flipped")) backMsg.innerText = chatBackMessages[index];
+      else backMsg.innerText="";
     }
 
-    // Floating hearts
     function createHearts(){
       const heart=document.createElement("div");
       heart.classList.add("heart"); heart.innerHTML="💖";
@@ -205,7 +181,6 @@
     }
     setInterval(createHearts,300);
 
-    // Story popup
     let storySteps=[
       "💝 First Talk (25 August): Hum ek anjaan GC me mile the... na tum mujhe jaanti thi, na main tumhe 😅",
       "💌 First Propose (28 August): Maine propose kiya... but I failed 😭",
@@ -219,14 +194,12 @@
     document.getElementById("storyText").innerText=storySteps[currentStory];
     function nextStory(){
       currentStory++;
-      if(currentStory>=storySteps.length) currentStory=0;
+      if(currentStory>=storySteps.length)currentStory=0;
       document.getElementById("storyText").innerText=storySteps[currentStory];
     }
     function openPopup(id){ document.getElementById(id).classList.remove("hidden"); }
     function closePopup(id){ document.getElementById(id).classList.add("hidden"); }
-
-    window.addEventListener('load',()=>{ document.getElementById("bgMusic").play().catch(()=>{}); });
-
   </script>
+
 </body>
 </html>
