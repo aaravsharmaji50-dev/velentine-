@@ -1,1 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Palk Cutie 💗</title>
 
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+  body{
+    background: linear-gradient(180deg,#2b000f,#500018,#120008);
+    color:white;
+    text-align:center;
+    overflow-x:hidden;
+    min-height:100vh;
+  }
+
+  .page{
+    display:none;
+    min-height:100vh;
+    padding:30px 15px;
+    position:relative;
+  }
+  .active{display:block;}
+
+  h1,h2{margin-bottom:12px;text-shadow:0 0 15px rgba(255,0,90,0.8);}
+  p{
+    max-width:750px;
+    margin:10px auto;
+    color:#ffd1dc;
+    line-height:1.7;
+    font-size:15px;
+  }
+
+  .btn{
+    margin-top:18px;
+    padding:12px 22px;
+    border:none;
+    border-radius:999px;
+    cursor:pointer;
+    background: linear-gradient(45deg,#ff0055,#ff4d6d);
+    color:white;
+    font-size:15px;
+    box-shadow:0 0 15px rgba(255,0,90,0.5);
+    transition:0.2s;
+  }
+  .btn:hover{transform:scale(1.05);}
+
+  input{
+    padding:12px 15px;
+    width:240px;
+    border-radius:12px;
+    border:none;
+    outline:none;
+    font-size:16px;
+    text-align:center;
+    margin-top:10px;
+  }
+
+  /* hearts */
+  .heart{
+    position:fixed;
+    bottom:-20px;
+    font-size:20px;
+    animation: floatUp linear infinite;
+    opacity:0.85;
+    z-index:-2;
+  }
+  @keyframes floatUp{
+    0%{transform:translateY(0) scale(0.8);opacity:0.9;}
+    100%{transform:translateY(-110vh) scale(1.4);opacity:0;}
+  }
+
+  /* sparkles */
+  .sparkle{
+    position:fixed;
+    width:6px;height:6px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.9);
+    box-shadow:0 0 10px rgba(255,255,255,0.9);
+    animation: sparkleMove linear infinite;
+    opacity:0.7;
+    z-index:-2;
+  }
+  @keyframes sparkleMove{
+    0%{transform:translateY(0);opacity:0.8;}
+    100%{transform:translateY(-110vh);opacity:0;}
+  }
+
+  /* cute sticker floating */
+  .sticker{
+    position:fixed;
+    bottom:-60px;
+    width:55px;
+    height:55px;
+    object-fit:contain;
+    animation: stickerFloat linear infinite;
+    opacity:0.9;
+    z-index:-1;
+    filter: drop-shadow(0 0 10px rgba(255,0,90,0.4));
+  }
+  @keyframes stickerFloat{
+    0%{transform:translateY(0) rotate(0deg) scale(0.9);opacity:0.9;}
+    100%{transform:translateY(-120vh) rotate(20deg) scale(1.2);opacity:0;}
+  }
+
+  /* popup */
+  .popup{
+    position:fixed;
+    top:0;left:0;
+    width:100%;height:100%;
+    background:rgba(0,0,0,0.65);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+    padding:20px;
+  }
+  .popup-box{
+    max-width:380px;
+    width:100%;
+    background: rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(12px);
+    border-radius:22px;
+    padding:18px;
+    box-shadow:0 0 35px rgba(255,0,80,0.55);
+    animation: popIn 0.35s ease;
+  }
+  @keyframes popIn{
+    from{transform:scale(0.8);opacity:0;}
+    to{transform:scale(1);opacity:1;}
+  }
+
+  .popup-img{
+    width:90px;
+    height:90px;
+    object-fit:contain;
+    margin-bottom:8px;
+    animation:bounce 1s infinite alternate;
+    filter: drop-shadow(0 0 15px rgba(255,0,80,0.35));
+  }
+  @keyframes bounce{
+    from{transform:translateY(0);}
+    to{transform:translateY(-6px);}
+  }
+
+  .popup-text{
+    font-size:15px;
+    color:#ffd1dc;
+    line-height:1.6;
+  }
+  .popup-close{
+    margin-top:14px;
+    padding:10px 18px;
+    border:none;
+    border-radius:999px;
+    cursor:pointer;
+    background: linear-gradient(45deg,#ff0055,#ff4d6d);
+    color:white;
+    font-size:15px;
+    box-shadow:0 0 15px rgba(255,0,90,0.45);
+  }
+
+  /* envelope */
+  .envelope{
+    width:260px;
+    height:170px;
+    margin:20px auto;
+    border-radius:20px;
+    cursor:pointer;
+    box-shadow:0 0 25px rgba(255,0,80,0.5);
+    border:2px solid rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.08);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .envelope::after{
+    content:"💌";
+    position:absolute;
+    font-size:90px;
+    animation:pulse 1.2s infinite alternate;
+  }
+  @keyframes pulse{
+    from{transform:scale(1);opacity:0.8;}
+    to{transform:scale(1.15);opacity:1;}
+  }
+
+  .letterBox{
+    max-width:750px;
+    margin:20px auto;
+    padding:18px;
+    background: rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:18px;
+    box-shadow:0 0 25px rgba(255,0,80,0.35);
+    text-align:left;
+    display:none;
+  }
+
+  /* timeline */
+  .timeline{max-width:700px;margin:20px auto;}
+  .storyCard{
+    margin:14px 0;
+    padding:16px;
+    border-radius:18px;
+    background: rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+    text-align:left;
+    box-shadow:0 0 20px rgba(255,0,80,0.25);
+  }
+  .storyCard h3{color:#ffb3c7;margin-bottom:8px;}
+
+  /* gallery */
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:12px;
+    max-width:850px;
+    margin:20px auto;
+  }
+  .gallery img{
+    width:100%;
+    border-radius:18px;
+    border:2px solid rgba(255,255,255,0.15);
+    box-shadow:0 0 20px rgba(255,0,80,0.25);
+  }
+
+  /* chat flip */
+  .chatGrid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:16px;
+    max-width:900px;
+    margin:20px auto;
+    perspective:1000px;
+  }
+  .flipCard{
+    width:100%;
+    height:220px;
+    position:relative;
+    cursor:pointer;
+    transform-style:preserve-3d;
+    transition:0.6s;
+  }
+  .flipCard.flipped{transform:rotateY(180deg);}
+  .flipFront,.flipBack{
+    position:absolute;
+    width:100%;height:100%;
+    border-radius:18px;
+    backface-visibility:hidden;
+    overflow:hidden;
+    border:2px solid rgba(255,255,255,0.15);
+    box-shadow:0 0 20px rgba(255,0,80,0.25);
+  }
+  .flipFront img{width:100%;height:100%;object-fit:cover;}
+  .flipBack{
+    transform:rotateY(180deg);
+    background: rgba(255,255,255,0.10);
+    backdrop-filter: blur(10px);
+    padding:14px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#ffd1dc;
+    font-size:14px;
+    line-height:1.6;
+    text-align:center;
+  }
+
+  /* why */
+  .whyBox{
+    max-width:720px;
+    margin:20px auto;
+    padding:18px;
+    border-radius:18px;
+    background: rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+    display:none;
+    box-shadow:0 0 25px rgba(255,0,80,0.3);
+  }
+
+  /* valentine */
+  .yesNo{
+    margin-top:25px;
+    position:relative;
+    height:220px;
+  }
+  #yesBtn{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    top:20px;
+  }
+  #noBtn{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    top:110px;
+    background: linear-gradient(45deg,#ff2d2d,#ff6b6b);
+  }
+
+  .finalCard{
+    max-width:780px;
+    margin:20px auto;
+    padding:20px;
+    border-radius:20px;
+    background: rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+    box-shadow:0 0 25px rgba(255,0,80,0.35);
+  }
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+  <source src="midnightcall.mp3" type="audio/mpeg">
+</audio>
+
+<!-- popup -->
+<div class="popup" id="popup">
+  <div class="popup-box">
+    <img id="popupImg" class="popup-img" src="stickers/hug.png">
+    <div class="popup-text" id="popupText">Text</div>
+    <button class="popup-close" onclick="closePopup()">Okay Cutie 💗</button>
+  </div>
+</div>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+  <h1>💗 Welcome Cutie 💗</h1>
+  <p>Only <b>Palk Cutie</b> can unlock this surprise 🔐✨</p>
+  <h2>Enter Password 💘</h2>
+  <input type="password" id="passInput" placeholder="0109">
+  <br>
+  <button class="btn" id="unlockBtn">Unlock 💘</button>
+  <p style="font-size:22px;margin-top:20px;">🥺💗✨</p>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+  <h1>Hii Meri Palk Paneer 😭💗</h1>
+  <p>
+    Ye website sirf tumhare liye hai cutie...  
+    Tum meri duniya ho... aur main tumhare bina incomplete hoon 🥺✨
+  </p>
+  <p style="font-size:20px;">🫂💗💗</p>
+  <button class="btn" onclick="nextPage(3)">Next ➜ 💞</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+  <h1>💌 Love Letter for My Cutie 💗</h1>
+  <p>Tap the letter 💌 to open it 🥺✨</p>
+
+  <div class="envelope" id="envelope"></div>
+
+  <div class="letterBox" id="letterBox">
+    <h2>My Cutie 💝☺️💗</h2>
+    <p>
+      I just want to say one thing from the deepest part of my heart… I love you forever.
+      You are not just a person for me, you are my everything.
+      Tumhari smile meri duniya brighten kar deti hai, aur tumhari presence se sab kuch better lagta hai.
+      When I think about my future, I only see you in it.
+      Aur sach bolu… main kabhi bhi tumhe khona nahi chahta, kyunki tumhe lose karna mera sabse bada fear hai.
+      Tum mere liye peace bhi ho aur meri strongest feeling bhi.
+      I don’t need perfect moments, bas tumhara saath chahiye.
+      I promise, no matter what happens, I’ll always choose you, always care for you, and always stay loyal to you.
+    </p>
+
+    <p style="margin-top:10px;">
+      Aur ek baat cutie...  
+      agar main duniya ka sabse lucky insan hoon...  
+      toh sirf isliye kyunki tum meri ho 🥺💗✨
+    </p>
+
+    <p><b>It’s a bare minimum. ❤️</b></p>
+    <p style="text-align:center;font-size:22px;">🥹💗✨</p>
+  </div>
+
+  <button class="btn" id="letterNextBtn" style="display:none;" onclick="nextPage(4)">Next ➜ 💞</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="page4">
+  <h1>📖 Our Story 💗</h1>
+  <p id="storyIntro">Are alam alam se plo cuitee 💝💗✨</p>
+  <div class="timeline" id="timeline"></div>
+  <button class="btn" id="storyNextBtn">Next ➜ 🥺</button>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page" id="page5">
+  <h1>📸 Our Cute Photos 💗</h1>
+  <p>Some moments I want to keep forever 🥺✨</p>
+
+  <div class="gallery">
+    <img src="photo1.jpg">
+    <img src="photo2.jpg">
+    <img src="photo3.jpg">
+    <img src="photo4.jpg">
+  </div>
+
+  <p style="margin-top:12px;font-size:16px;">
+    Tumhari har photo meri aankhon ka sukoon hai 😭💗
+  </p>
+
+  <button class="btn" onclick="nextPage(6)">Next ➜ 💞</button>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page" id="page6">
+  <h1>💬 Our Chats 💗</h1>
+  <p>Tap any chat screenshot to see what I felt that time 🥺✨</p>
+
+  <div class="chatGrid">
+    <div class="flipCard" onclick="flipCard(this)">
+      <div class="flipFront"><img src="chat1.jpg"></div>
+      <div class="flipBack">🥺💗 Us moment mujhe laga... meri duniya safe hai, kyunki tum mere saath ho.</div>
+    </div>
+
+    <div class="flipCard" onclick="flipCard(this)">
+      <div class="flipFront"><img src="chat2.jpg"></div>
+      <div class="flipBack">😭✨ Main itna smile kar raha tha... kyunki tum mujhse baat kar rahi thi.</div>
+    </div>
+
+    <div class="flipCard" onclick="flipCard(this)">
+      <div class="flipFront"><img src="chat3.jpg"></div>
+      <div class="flipBack">🥹💘 Mujhe dar lagta tha tumhe kho dene ka... par main tumhe hamesha apna banana chahta tha.</div>
+    </div>
+
+    <div class="flipCard" onclick="flipCard(this)">
+      <div class="flipFront"><img src="chat4.jpg"></div>
+      <div class="flipBack">😳💗 Main blush kar raha tha... kyunki tum itni cute ho.</div>
+    </div>
+
+    <div class="flipCard" onclick="flipCard(this)">
+      <div class="flipFront"><img src="chat5.jpg"></div>
+      <div class="flipBack">💞✨ Tum meri habit nahi ho... tum meri rooh ho cutie.</div>
+    </div>
+  </div>
+
+  <button class="btn" onclick="nextPage(7)">Next ➜ 💞</button>
+</div>
+
+<!-- PAGE 7 -->
+<div class="page" id="page7">
+  <h1>💗 Why I Love You</h1>
+  <p>Click "See" cutie 😭✨</p>
+  <button class="btn" onclick="showWhy()">See 💘</button>
+
+  <div class="whyBox" id="whyBox">
+    <p>
+      “Yaar main tumse kisi wajah se pyaar nahi karta… bas karta hoon.
+      Mujhe khud nahi pata kyu karta hoon, lekin karta hoon.
+      Kyuki agar pyaar kisi reason ki wajah se hota, to reason khatam hote hi pyaar bhi khatam ho jata…
+      Par mera pyaar reason pe depend nahi karta.”
+    </p>
+    <p style="text-align:center;font-size:22px;">Meri pyari cuitee 💝💗✨</p>
+  </div>
+
+  <button class="btn" onclick="nextPage(9)">Next ➜ 💞</button>
+</div>
+
+<!-- PAGE 9 -->
+<div class="page" id="page9">
+  <h1>💘 Will You Be My Valentine? 💘</h1>
+  <p>Cutie please choose 🥺💗✨</p>
+
+  <div class="yesNo">
+    <button class="btn" id="yesBtn" onclick="yesVal()">YES 💗</button>
+    <button class="btn" id="noBtn">NO 😭</button>
+  </div>
+</div>
+
+<!-- PAGE 10 -->
+<div class="page" id="page10">
+  <h1>😭💗 I Knew It 💗😭</h1>
+
+  <div class="finalCard">
+    <p>
+      Mujhe pata tha tum mujhse pyaar karti ho cutieee 🥺💘✨  
+      Thank you for choosing me…
+    </p>
+
+    <p style="margin-top:12px;">
+      Chahe hum long distance me ho…  
+      lekin mera dil hamesha tumhare paas rehta hai 💗
+    </p>
+
+    <p style="margin-top:12px;">
+      Main tumhe har din miss karta hoon…  
+      har raat tumhare khayalon me so jata hoon…  
+      aur har subah tumhari smile imagine karke uthta hoon 🥹💗
+    </p>
+
+    <h2 style="margin-top:18px;">Happy Valentine My Palk Paneer 💝💗</h2>
+    <p style="font-size:26px;">🫂💞✨💗🥹</p>
+
+    <p style="margin-top:18px;font-size:14px;color:#ffc2d1;">
+      (No matter how far you are… you will always be mine.)
+    </p>
+  </div>
+</div>
+
+<script>
+  const stickerList = [
+    "stickers/hug.png",
+    "stickers/kiss.png",
+    "stickers/blush.png",
+    "stickers/cry.png",
+    "stickers/love.png"
+  ];
+
+  function showPopup(msg, img){
+    document.getElementById("popupText").innerText = msg;
+    document.getElementById("popupImg").src = img;
+    document.getElementById("popup").style.display = "flex";
+  }
+  function closePopup(){
+    document.getElementById("popup").style.display = "none";
+  }
+
+  function nextPage(n){
+    document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+    document.getElementById("page"+n).classList.add("active");
+    window.scrollTo(0,0);
+  }
+
+  function tryPlayMusic(){
+    const music = document.getElementById("bgMusic");
+    if(!music) return;
+    music.volume = 0.6;
+    music.play().catch(()=>{});
+  }
+
+  function checkPass(){
+    const pass = document.getElementById("passInput").value.trim();
+    if(pass === "0109"){
+      tryPlayMusic();
+      showPopup("Unlocked 😭💗 Welcome Cutieee ✨", "stickers/love.png");
+      setTimeout(()=>nextPage(2),800);
+    }else{
+      showPopup("Wrong password cutie 😭💗 Try again!", "stickers/cry.png");
+    }
+  }
+
+  document.getElementById("unlockBtn").addEventListener("click", checkPass);
+  document.getElementById("passInput").addEventListener("keypress", function(e){
+    if(e.key==="Enter") checkPass();
+  });
+
+  document.getElementById("envelope").addEventListener("click", ()=>{
+    document.getElementById("letterBox").style.display="block";
+    document.getElementById("letterNextBtn").style.display="inline-block";
+    showPopup("Awwww Cutie opened the letter 🥺💗", "stickers/hug.png");
+  });
+
+  const storyData = [
+    {title:"✨ 25 August — First Talk (GC Moment)",
+     text:"We met in an unknown group chat… na tum mujhe jaanti thi, na main tumhe. Main us time bevkufo wali harkatein karta tha 😅… but phir bhi tumne mera propose accept kar liya cutie 🥹💗."},
+
+    {title:"😅 28 August — First Propose",
+     text:"Maine tumhe first time propose kiya 😅… but I failed. Par main ruka nahi… because my love was real 🥺💗."},
+
+    {title:"🥲 01 September — Second Propose (DM)",
+     text:"Maine himmat karke tumhe DM me propose kiya… aur thoda time manga. Wo waiting time mere liye sabse fearest time tha 🥲💔."},
+
+    {title:"🥹💗 01 September (Night) — YES",
+     text:"Ussi raat tumne mere sawaal ka jawab de diya 😭💗. Main itna khush tha ki main bata bhi nahi saktaaaa 🥹✨."},
+
+    {title:"📞 07 November — First Call (34 Seconds)",
+     text:"Tumne mujhe first call ki 😅. Mere haath darr se kaanp rahe the… aur main kuch bol nahi pa raha tha 😭. Wo call bas 34 seconds chali… but it was magic 🥹💗."},
+
+    {title:"🎥 05 December — First Video Call",
+     text:"Tumne mujhe first video call ki 😅💗. Main shy tha… but itna ghabraya nahi. Bas tumhe dekh ke happiness feel hui 🥹✨."}
+  ];
+
+  let storyIndex=0;
+  document.getElementById("storyNextBtn").addEventListener("click", ()=>{
+    const timeline=document.getElementById("timeline");
+    const intro=document.getElementById("storyIntro");
+
+    if(storyIndex===0) intro.style.display="none";
+
+    if(storyIndex < storyData.length){
+      const card=document.createElement("div");
+      card.className="storyCard";
+      card.innerHTML=`<h3>${storyData[storyIndex].title}</h3><p>${storyData[storyIndex].text}</p>`;
+      timeline.appendChild(card);
+
+      showPopup("Awww memory unlocked 🥺💗", stickerList[Math.floor(Math.random()*stickerList.length)]);
+      storyIndex++;
+    }else{
+      nextPage(5);
+    }
+  });
+
+  function flipCard(card){
+    card.classList.toggle("flipped");
+  }
+
+  function showWhy(){
+    document.getElementById("whyBox").style.display="block";
+    showPopup("Hehehe Cutie is reading why I love you 😭💗", "stickers/blush.png");
+  }
+
+  let noCount=0;
+  document.getElementById("noBtn").addEventListener("click", ()=>{
+    const noBtn=document.getElementById("noBtn");
+    noBtn.style.left=(Math.random()*70+10)+"%";
+    noBtn.style.top=(Math.random()*60+20)+"%";
+
+    noCount++;
+    if(noCount%3===1) showPopup("Plzz yes krdo na cutieee 🥺💗", "stickers/cry.png");
+    else if(noCount%3===2) showPopup("Mera dil mat todo cuitee 😭💔", "stickers/cry.png");
+    else showPopup("Main mar jaunga apke binaaaaa 😭💗🥺", "stickers/hug.png");
+  });
+
+  function yesVal(){
+    showPopup("Yessss 😭💗 I love you cutieee!", "stickers/kiss.png");
+    setTimeout(()=>nextPage(10),900);
+  }
+
+  // hearts
+  function createHeart(){
+    const h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="💗";
+    h.style.left=Math.random()*100+"vw";
+    h.style.fontSize=(Math.random()*22+12)+"px";
+    h.style.animationDuration=(Math.random()*5+4)+"s";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),9000);
+  }
+  setInterval(createHeart,170);
+
+  // sparkles
+  function createSparkle(){
+    const s=document.createElement("div");
+    s.className="sparkle";
+    s.style.left=Math.random()*100+"vw";
+    s.style.top="110vh";
+    s.style.animationDuration=(Math.random()*6+4)+"s";
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),9000);
+  }
+  setInterval(createSparkle,240);
+
+  // floating stickers
+  function createSticker(){
+    const st=document.createElement("img");
+    st.className="sticker";
+    st.src = stickerList[Math.floor(Math.random()*stickerList.length)];
+    st.style.left=Math.random()*100+"vw";
+    st.style.width=(Math.random()*30+45)+"px";
+    st.style.height=st.style.width;
+    st.style.animationDuration=(Math.random()*7+5)+"s";
+    document.body.appendChild(st);
+    setTimeout(()=>st.remove(),12000);
+  }
+  setInterval(createSticker,900);
+</script>
+
+</body>
+</html>
