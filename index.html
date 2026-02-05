@@ -1,205 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For My Cutie 💝</title>
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-    body{background:linear-gradient(135deg,#ff4b6e,#ff8fb3,#ffd1dc);color:white;overflow-x:hidden;min-height:100vh;text-align:center;}
-    .container{max-width:900px;margin:auto;padding:25px;position:relative;z-index:5;}
-    h1,h2{margin-bottom:15px;text-shadow:0 0 10px rgba(255,255,255,0.4);}
-    p{font-size:17px;line-height:1.6;margin-bottom:15px;}
-    .btn{padding:12px 22px;background:white;color:#ff2f5d;border:none;border-radius:12px;font-size:16px;cursor:pointer;margin:12px;font-weight:bold;transition:0.3s;box-shadow:0 0 15px rgba(255,255,255,0.5);}
-    .btn:hover{transform:scale(1.08);}
-    .card{background:rgba(255,255,255,0.18);border-radius:18px;padding:20px;margin:20px 0;backdrop-filter:blur(10px);box-shadow:0 0 20px rgba(0,0,0,0.15);}
-    .hidden{display:none;}
-    .heart{position:fixed;bottom:-10px;font-size:20px;animation:floatUp 6s linear infinite;opacity:0.8;z-index:1;}
-    @keyframes floatUp{0%{transform:translateY(0) scale(1);opacity:1;}100%{transform:translateY(-110vh) scale(1.8);opacity:0;}}
-    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px;margin-top:15px;}
-    .gallery img{width:100%;border-radius:15px;box-shadow:0 0 15px rgba(255,255,255,0.35);transition:0.3s;cursor:pointer;}
-    .gallery img:hover{transform:scale(1.05) rotate(2deg);box-shadow:0 0 25px rgba(255,255,255,0.6);}
-    .flip-card{background:transparent;width:100%;height:220px;perspective:1000px;cursor:pointer;}
-    .flip-card-inner{position:relative;width:100%;height:100%;text-align:center;transition:transform 0.8s;transform-style:preserve-3d;}
-    .flip-card.flipped .flip-card-inner{transform:rotateY(180deg);}
-    .flip-card-front, .flip-card-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:15px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:10px;}
-    .flip-card-front{background:rgba(255,255,255,0.18);box-shadow:0 0 20px rgba(255,255,255,0.25);}
-    .flip-card-front img{width:100%;height:100%;object-fit:cover;}
-    .flip-card-back{background:rgba(0,0,0,0.25);transform:rotateY(180deg);font-size:16px;}
-    .sticker{width:90px;margin:10px auto;display:block;}
-    .popup{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.55);display:flex;justify-content:center;align-items:center;z-index:999;padding:20px;}
-    .popup-content{background:rgba(255,255,255,0.2);padding:25px;border-radius:20px;max-width:500px;width:100%;backdrop-filter:blur(10px);box-shadow:0 0 25px rgba(255,255,255,0.25);animation:pop 0.4s ease;}
-    @keyframes pop{0%{transform:scale(0.7);opacity:0;}100%{transform:scale(1);opacity:1;}}
-    input{padding:12px;width:80%;border-radius:12px;border:none;font-size:16px;margin-top:15px;text-align:center;outline:none;}
-    .big-love{font-size:20px;font-weight:bold;margin-top:20px;text-shadow:0 0 15px rgba(255,255,255,0.5);}
-    .final-heart{font-size:45px;margin-top:20px;animation:beat 1s infinite;}
-    @keyframes beat{0%,100%{transform:scale(1);}50%{transform:scale(1.2);}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Cutie 💝</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:linear-gradient(135deg,#ff4b6e,#ff8fb3,#ffd1dc);color:white;overflow-x:hidden;min-height:100vh;text-align:center;position:relative;}
+.container{max-width:900px;margin:auto;padding:25px;position:relative;z-index:5;}
+h1,h2{margin-bottom:15px;text-shadow:0 0 10px rgba(255,255,255,0.4);}
+p{font-size:17px;line-height:1.6;margin-bottom:15px;}
+.btn{padding:12px 22px;background:white;color:#ff2f5d;border:none;border-radius:12px;font-size:16px;cursor:pointer;margin:12px;font-weight:bold;transition:0.3s;box-shadow:0 0 15px rgba(255,255,255,0.5);}
+.btn:hover{transform:scale(1.08);}
+.card{background:rgba(255,255,255,0.18);border-radius:18px;padding:20px;margin:20px 0;backdrop-filter:blur(10px);box-shadow:0 0 20px rgba(0,0,0,0.15);}
+.hidden{display:none;}
+.heart{position:fixed;bottom:-10px;font-size:20px;animation:floatUp 6s linear infinite;opacity:0.8;z-index:1;}
+@keyframes floatUp{0%{transform:translateY(0) scale(1);opacity:1;}100%{transform:translateY(-110vh) scale(1.8);opacity:0;}}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px;margin-top:15px;}
+.gallery img{width:100%;border-radius:15px;box-shadow:0 0 15px rgba(255,255,255,0.35);transition:0.3s;cursor:pointer;}
+.gallery img:hover{transform:scale(1.05);}
+.flip-card{background:transparent;width:100%;height:220px;perspective:1000px;cursor:pointer;}
+.flip-card-inner{position:relative;width:100%;height:100%;text-align:center;transition:transform 0.8s;transform-style:preserve-3d;}
+.flip-card.flipped .flip-card-inner{transform:rotateY(180deg);}
+.flip-card-front, .flip-card-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:15px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:10px;}
+.flip-card-front{background:rgba(255,255,255,0.18);box-shadow:0 0 20px rgba(255,255,255,0.25);}
+.flip-card-front img{width:100%;height:100%;object-fit:cover;}
+.flip-card-back{background:rgba(0,0,0,0.25);transform:rotateY(180deg);font-size:16px;}
+.sticker{width:90px;margin:10px auto;display:block;}
+.popup{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.55);display:flex;justify-content:center;align-items:center;z-index:999;padding:20px;}
+.popup-content{background:rgba(255,255,255,0.2);padding:25px;border-radius:20px;max-width:500px;width:100%;backdrop-filter:blur(10px);box-shadow:0 0 25px rgba(255,255,255,0.25);animation:pop 0.4s ease;}
+@keyframes pop{0%{transform:scale(0.7);opacity:0;}100%{transform:scale(1);opacity:1;}}
+input{padding:12px;width:80%;border-radius:12px;border:none;font-size:16px;margin-top:15px;text-align:center;outline:none;}
+.big-love{font-size:20px;font-weight:bold;margin-top:20px;text-shadow:0 0 15px rgba(255,255,255,0.5);}
+.final-heart{font-size:45px;margin-top:20px;animation:beat 1s infinite;}
+@keyframes beat{0%,100%{transform:scale(1);}50%{transform:scale(1.2);}}
+/* Confetti */
+.confetti{position:fixed;width:10px;height:10px;background:rgba(255,255,255,0.8);top:0;z-index:9999;pointer-events:none;}
+</style>
 </head>
 <body>
 
-  <audio id="bgMusic" autoplay loop>
-    <source src="midnightcall.mp3" type="audio/mpeg">
-  </audio>
+<!-- Background Music -->
+<audio id="bgMusic" autoplay loop>
+<source src="midnightcall.mp3.mpeg" type="audio/mpeg">
+</audio>
 
-  <div class="container">
+<div class="container">
 
-    <!-- LOGIN PAGE -->
-    <div id="loginPage" class="card">
-      <h1>💝 Welcome Cutie 💝</h1>
-      <img src="stickers_love.gif" class="sticker">
-      <p>Enter the secret password to unlock my heart 😭💗</p>
-      <input type="password" id="passwordInput" placeholder="Enter Password...">
-      <br>
-      <button class="btn" onclick="checkPassword()">Unlock 💌</button>
-      <p id="errorMsg" style="color:#ffe6ef;margin-top:10px;"></p>
-    </div>
+<!-- LOGIN PAGE -->
+<div id="loginPage" class="card">
+<h1>💝 Welcome Cutie 💝</h1>
+<img src="stickers_love.gif" class="sticker">
+<p>Enter the secret password to unlock my heart 😭💗</p>
+<input type="password" id="passwordInput" placeholder="Enter Password...">
+<br>
+<button class="btn" onclick="checkPassword()">Unlock 💌</button>
+<p id="errorMsg" style="color:#ffe6ef;margin-top:10px;"></p>
+</div>
 
-    <!-- MAIN PAGE -->
-    <div id="mainPage" class="hidden">
+<!-- MAIN PAGE -->
+<div id="mainPage" class="hidden">
 
-      <!-- LOVE LETTER -->
-      <div class="card">
-        <h1>Meri Pyari Cutieee 💝☺️💗</h1>
-        <img src="stickers_blush.gif" class="sticker">
-        <p>I just want to say one thing from the deepest part of my heart… <b>I love you forever.</b></p>
-        <p>Tumhari smile meri duniya brighten kar deti hai, aur tumhari presence se sab kuch better lagta hai.</p>
-        <p>Aur sach bolu… main kabhi bhi tumhe khona nahi chahta.</p>
-        <p class="big-love">It’s a bare minimum. ❤️</p>
-        <button class="btn" onclick="openPopup('storyPopup')">Next ➜ Our Story 💌</button>
-      </div>
+<!-- LOVE LETTER -->
+<div class="card">
+<h1>Meri Pyari Cutieee 💝☺️💗</h1>
+<img src="stickers_blush.gif" class="sticker">
+<p>I just want to say one thing from the deepest part of my heart… <b>I love you forever.</b></p>
+<p>Tumhari smile meri duniya brighten kar deti hai, aur tumhari presence se sab kuch better lagta hai.</p>
+<p>Aur sach bolu… main kabhi bhi tumhe khona nahi chahta.</p>
+<p class="big-love">It’s a bare minimum. ❤️</p>
+<button class="btn" onclick="openPopup('storyPopup')">Next ➜ Our Story 💌</button>
+</div>
 
-      <!-- PHOTO GALLERY -->
-      <div class="card">
-        <h2>📸 Our Cute Photos 💞</h2>
-        <img src="stickers_hug.gif" class="sticker">
-        <div class="gallery">
-          <img src="photos1.jpg.jpeg">
-          <img src="photos2.jpg.jpeg">
-          <img src="photos3.jpg.jpeg">
-          <img src="photos4.jpg.jpeg">
-        </div>
-      </div>
+<!-- PHOTO GALLERY -->
+<div class="card">
+<h2>📸 Our Cute Photos 💞</h2>
+<img src="stickers_hug.gif" class="sticker">
+<div class="gallery">
+<img src="photos1.jpg.jpeg">
+<img src="photos2.jpg.jpeg">
+<img src="photos3.jpg.jpeg">
+<img src="photos4.jpg.jpeg">
+</div>
+</div>
 
-      <!-- CHAT FLIP -->
-      <div class="card">
-        <h2>💬 Our Chat Memories 🥹</h2>
-        <img src="stickers_kiss.gif" class="sticker">
-        <p>Click any chat screenshot to flip & read my feelings 💗</p>
-        <div class="gallery">
-          <div class="flip-card" onclick="flipCard(this,0)">
-            <div class="flip-card-inner">
-              <div class="flip-card-front"><img src="chats1.jpg.jpeg"></div>
-              <div class="flip-card-back"><img src="stickers_blush.gif" class="sticker"><p></p></div>
-            </div>
-          </div>
-          <div class="flip-card" onclick="flipCard(this,1)">
-            <div class="flip-card-inner">
-              <div class="flip-card-front"><img src="chats2.jpg.jpeg"></div>
-              <div class="flip-card-back"><img src="stickers_love.gif" class="sticker"><p></p></div>
-            </div>
-          </div>
-          <div class="flip-card" onclick="flipCard(this,2)">
-            <div class="flip-card-inner">
-              <div class="flip-card-front"><img src="chats3.jpg.jpeg"></div>
-              <div class="flip-card-back"><img src="stickers_hug.gif" class="sticker"><p></p></div>
-            </div>
-          </div>
-          <div class="flip-card" onclick="flipCard(this,3)">
-            <div class="flip-card-inner">
-              <div class="flip-card-front"><img src="chats4.jpg.jpeg"></div>
-              <div class="flip-card-back"><img src="stickers_kiss.gif" class="sticker"><p></p></div>
-            </div>
-          </div>
-          <div class="flip-card" onclick="flipCard(this,4)">
-            <div class="flip-card-inner">
-              <div class="flip-card-front"><img src="chats5.jpg.jpeg"></div>
-              <div class="flip-card-back"><img src="stickers_cry.gif" class="sticker"><p></p></div>
-            </div>
-          </div>
-        </div>
-      </div>
+<!-- CHAT FLIP -->
+<div class="card">
+<h2>💬 Our Chat Memories 🥹</h2>
+<img src="stickers_kiss.gif" class="sticker">
+<p>Click any chat screenshot to flip & read my feelings 💗</p>
+<div class="gallery">
 
-      <!-- LAST MESSAGE PAGE -->
-      <div class="card">
-        <h2>💌 My Last Message for You 💌</h2>
-        <img src="stickers_blush.gif" class="sticker">
-        <p>Pls kbhi chhor ke mt jana muje 😭 Pata me otna b achha ni ho, bt me hmesha koshish krta rhoonga taki aap hmesha khush rho mere sath 💗✨</p>
-        <p>Aur aage… <b>mera pyar, mera support, meri loyalty hamesha aapke sath rahegi 💝</b></p>
-        <p class="big-love">Meri cutie ke liye, hamesha 💖🥹</p>
-        <div class="final-heart">❤️</div>
-      </div>
+<div class="flip-card" onclick="flipCard(this,0)">
+<div class="flip-card-inner">
+<div class="flip-card-front"><img src="chats1.jpg.jpeg"></div>
+<div class="flip-card-back"><img src="stickers_blush.gif" class="sticker"><p></p></div>
+</div>
+</div>
 
-    </div>
-  </div>
+<div class="flip-card" onclick="flipCard(this,1)">
+<div class="flip-card-inner">
+<div class="flip-card-front"><img src="chats2.jpg.jpeg"></div>
+<div class="flip-card-back"><img src="stickers_love.gif" class="sticker"><p></p></div>
+</div>
+</div>
 
-  <!-- STORY POPUP -->
-  <div id="storyPopup" class="popup hidden">
-    <div class="popup-content">
-      <h2>💌 Our Story Timeline 💌</h2>
-      <img src="stickers_hug.gif" class="sticker">
-      <p id="storyText"></p>
-      <button class="btn" onclick="nextStory()">Next ➜</button>
-      <button class="btn" onclick="closePopup('storyPopup')">Close ✖</button>
-    </div>
-  </div>
+<div class="flip-card" onclick="flipCard(this,2)">
+<div class="flip-card-inner">
+<div class="flip-card-front"><img src="chats3.jpg.jpeg"></div>
+<div class="flip-card-back"><img src="stickers_hug.gif" class="sticker"><p></p></div>
+</div>
+</div>
 
-  <script>
-    let password="0109";
-    function checkPassword(){
-      let input=document.getElementById("passwordInput").value;
-      if(input===password){
-        document.getElementById("loginPage").classList.add("hidden");
-        document.getElementById("mainPage").classList.remove("hidden");
-        document.getElementById("bgMusic").play().catch(()=>{});
-      } else { document.getElementById("errorMsg").innerText="Wrong password cutie 😭💔 try again!"; }
-    }
+<div class="flip-card" onclick="flipCard(this,3)">
+<div class="flip-card-inner">
+<div class="flip-card-front"><img src="chats4.jpg.jpeg"></div>
+<div class="flip-card-back"><img src="stickers_kiss.gif" class="sticker"><p></p></div>
+</div>
+</div>
 
-    const chatBackMessages=[
-      "Ye birthday me whole life ka happiest birthday he aur apka pyaar se muje bchha bolna. Ufffffff kya hi bolu me 🥹✨💝💕🌺💗",
-      "Jb aapne ye bola th tb me khud ko sbse secure bf maan rha th 🥹✨💗 muje esa lg rha th ki kisi ke liye to me priority hoo 🫂💗✨",
-      "Me janta ho cuite aap muje bht yaad krte ho or me b apko bht jada yaad krta hoo bt jb aap raat ko good nyt  mera bchha bolte ho to me ek alag hi skoon feel krta hoo 🤗💞❤️‍🩹",
-      "Yha se hmari jorny start hue thi me bht jada khush nseeb ho jo muje aap jesi loyal cute or caring gf mili h plz kbhi chhor ke mt jana muje ...🥺🫂💗❤️‍🩹",
-      "Yha muje phli baar lga th ki mere effort apko khush krte h jitna syd me apko chahta ho syd aap b muje otna hi chahte ho 🫂🎀🥀💝"
-    ];
+<div class="flip-card" onclick="flipCard(this,4)">
+<div class="flip-card-inner">
+<div class="flip-card-front"><img src="chats5.jpg.jpeg"></div>
+<div class="flip-card-back"><img src="stickers_cry.gif" class="sticker"><p></p></div>
+</div>
+</div>
 
-    function flipCard(card,index){
-      card.classList.toggle("flipped");
-      const backMsg = card.querySelector(".flip-card-back p");
-      if(card.classList.contains("flipped")) backMsg.innerText = chatBackMessages[index];
-      else backMsg.innerText="";
-    }
+</div>
+</div>
 
-    function createHearts(){
-      const heart=document.createElement("div");
-      heart.classList.add("heart"); heart.innerHTML="💖";
-      heart.style.left=Math.random()*100+"vw";
-      heart.style.animationDuration=(Math.random()*3+3)+"s";
-      heart.style.fontSize=(Math.random()*15+15)+"px";
-      document.body.appendChild(heart);
-      setTimeout(()=>heart.remove(),6000);
-    }
-    setInterval(createHearts,300);
+<!-- LAST MESSAGE PAGE -->
+<div class="card">
+<h2>💌 My Last Message for You 💌</h2>
+<img src="stickers_blush.gif" class="sticker">
+<p>Pls kbhi chhor ke mt jana muje 😭 Pata me otna b achha ni ho, bt me hmesha koshish krta rhoonga taki aap hmesha khush rho mere sath 💗✨</p>
+<p>Aur aage… <b>mera pyar, mera support, meri loyalty hamesha aapke sath rahegi 💝</b></p>
+<p class="big-love">Meri cutie ke liye, hamesha 💖🥹</p>
+<div class="final-heart">❤️</div>
 
-    let storySteps=[
-      "💝 First Talk (25 August): Hum ek anjaan GC me mile the... na tum mujhe jaanti thi, na main tumhe 😅",
-      "💌 First Propose (28 August): Maine propose kiya... but I failed 😭",
-      "🥺 Second Propose (1 September): Maine personal DM me himmat ki... aur time manga... vo meri life ka sabse fearest moment tha 💔",
-      "😭💗 Us raat tumne YES bola... main itna khush tha ki explain nahi kar sakta!",
-      "📞 7 November: Tumhari first call... mere haath kaanp rahe the 😭 call sirf 34 sec ka tha but mere liye duniya thi 💗",
-      "📹 5 December: Tumhari first video call... thoda shy tha, but tumhe dekh ke sab pyara lag raha tha 💝",
-      "💘 Aur ab... chahe long distance ho... tum meri rooh me ho Cutie 💗🌍✨"
-    ];
-    let currentStory=0;
-    document.getElementById("storyText").innerText=storySteps[currentStory];
-    function nextStory(){
-      currentStory++;
-      if(currentStory>=storySteps.length)currentStory=0;
-      document.getElementById("storyText").innerText=storySteps[currentStory];
-    }
-    function openPopup(id){ document.getElementById(id).classList.remove("hidden"); }
-    function closePopup(id){ document.getElementById(id).classList.add("hidden"); }
-  </script>
+<button class="btn" onclick="yesClicked()">YES 💝</button>
+<button class="btn" onclick="noClicked()">NO 😭</button>
+<p id="valMsg" style="margin-top:15px;font-size:18px;"></p>
+<img id="valSticker" src="" class="sticker hidden">
+</div>
 
+</div>
+
+</div>
+
+<!-- STORY POPUP -->
+<div id="storyPopup" class="popup hidden">
+<div class="popup-content">
+<h2>💌 Our Story Timeline 💌</h2>
+<img src="stickers_hug.gif" class="sticker">
+<p id="storyText"></p>
+<button class="btn" onclick="nextStory()">Next ➜</button>
+<button class="btn" onclick="closePopup('storyPopup')">Close ✖</button>
+</div>
+</div>
+
+<script>
+let password="0109";
+function checkPassword(){
+let input=document.getElementById("passwordInput").value;
+if(input===password){
+document.getElementById("loginPage").classList.add("hidden");
+document.getElementById("mainPage").classList.remove("hidden");
+document.getElementById("bgMusic").play().catch(()=>{});
+}else{
+document.getElementById("errorMsg").innerText="Wrong password cutie 😭💔 try again!";
+}
+}
+
+const chatBackMessages=[
+"Ye birthday me whole life ka happiest birthday he aur apka pyaar se muje bchha bolna. Ufffffff kya hi bolu me 🥹✨💝💕🌺💗",
+"Jb aapne ye bola th tb me khud ko sbse secure bf maan rha th 🥹✨💗 muje esa lg rha th ki kisi ke liye to me priority hoo 🫂💗✨",
+"Me janta ho cuite aap muje bht yaad krte ho or me b apko bht jada yaad krta hoo bt jb aap raat ko good nyt  mera bchha bolte ho to me ek alag hi skoon feel krta hoo 🤗💞❤️‍🩹",
+"Yha se hmari jorny start hue thi me bht jada khush nseeb ho jo muje aap jesi loyal cute or caring gf mili h plz kbhi chhor ke mt jana muje ...🥺🫂💗❤️‍🩹",
+"Yha muje phli baar lga th ki mere effort apko khush krte h jitna syd me apko chahta ho syd aap b muje otna hi chahte ho 🫂🎀🥀💝"
+];
+
+function flipCard(card,index){
+card.classList.toggle("flipped");
+const backMsg = card.querySelector(".flip-card-back p");
+if(card.classList.contains("flipped")) backMsg.innerText = chatBackMessages[index];
+else backMsg.innerText="";
+}
+
+// Heart animation
+function createHearts(){
+const heart=document.createElement("div");
+heart.classList.add("heart"); heart.innerHTML="💖";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(Math.random()*3+3)+"s";
+heart.style.fontSize=(Math.random()*15+15)+"px";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
+}
+setInterval(createHearts,300);
+
+// Story Timeline
+let storySteps=[
+"💝 First Talk (25 August): Hum ek anjaan GC me mile the... na tum mujhe jaanti thi, na main tumhe 😅",
+"💌 First Propose (28 August): Maine propose kiya... but I failed 😭",
+"🥺 Second Propose (1 September): Maine personal DM me himmat ki... aur time manga... vo meri life ka sabse fearest moment tha 💔",
+"😭💗 Us raat tumne YES bola... main itna khush tha ki explain nahi kar sakta!",
+"📞 7 November: Tumhari first call... mere haath kaanp rahe the 😭 call sirf 34 sec ka tha but mere liye duniya thi 💗",
+"📹 5 December: Tumhari first video call... thoda shy tha, but tumhe dekh ke sab pyara lag raha tha 💝",
+"💘 Aur ab... chahe long distance ho... tum meri rooh me ho Cutie 💗🌍✨"
+];
+let currentStory=0;
+document.getElementById("storyText").innerText=storySteps[currentStory];
+function nextStory(){
+currentStory++;
+if(currentStory>=storySteps.length)currentStory=0;
+document.getElementById("storyText").innerText=storySteps[currentStory];
+}
+
+function openPopup(id){document.getElementById(id).classList.remove("hidden");}
+function closePopup(id){document.getElementById(id).classList.add("hidden");}
+
+// Valentine YES/NO + Confetti
+let noCount=0;
+function yesClicked(){
+document.getElementById("valMsg").innerHTML="😭💝 YAYYYYYY!!! My Cutie said YES!! <br> I love you forever 💗✨<br> Tum meri duniya ho 🥺💘";
+let sticker=document.getElementById("valSticker");sticker.src="stickers_hug.gif";sticker.classList.remove("hidden");
+confettiBurst();
+}
+function noClicked(){
+noCount++;
+let msg=""; let sticker=document.getElementById("valSticker");
+if(noCount===1){msg="🥺 Please yes krdo na cutie 💗"; sticker.src="stickers_cry.gif";}
+else if(noCount===2){msg="😭 Mera dil mat todo cutie 💔"; sticker.src="stickers_cry.gif";}
+else{msg="😭😭 Mar jaunga apke binaaaaa 💔💔 (ab YES krdo naaaaa)"; sticker.src="stickers_cry.gif";}
+document.getElementById("valMsg").innerText=msg;sticker.classList.remove("hidden");
+}
+
+// Confetti effect
+function confettiBurst(){
+for(let i=0;i<150;i++){
+let c=document.createElement("div");c.classList.add("confetti");
+c.style.left=Math.random()*window.innerWidth+"px";
+c.style.backgroundColor=`hsl(${Math.random()*360},70%,60%)`;
+document.body.appendChild(c);
+let fallTime=Math.random()*3+2;
+c.animate([{transform:`translateY(0px)`},{transform:`translateY(${window.innerHeight}px)`}],{duration:fallTime*1000,easing:'linear'});
+setTimeout(()=>c.remove(),fallTime*1000);
+}
+}
+
+</script>
 </body>
 </html>
