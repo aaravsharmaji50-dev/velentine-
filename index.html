@@ -89,7 +89,6 @@ input{padding:12px;width:80%;border-radius:12px;border:none;font-size:16px;margi
 <img src="stickers_kiss.gif" class="sticker">
 <p>Click any chat screenshot to flip & read my feelings 💗</p>
 <div class="gallery">
-<!-- Flip cards -->
 <div class="flip-card" onclick="flipCard(this,0)">
 <div class="flip-card-inner">
 <div class="flip-card-front"><img src="chats1.jpg"></div>
@@ -206,7 +205,7 @@ let storySteps=[
 ];
 let currentStory=0;
 function openPopup(id){
-  currentStory=0; // reset story step
+  currentStory=0;
   document.getElementById(id).classList.remove("hidden");
   document.getElementById("storyText").innerText = storySteps[currentStory];
 }
@@ -246,9 +245,11 @@ setTimeout(()=>c.remove(),fallTime*1000);
 }
 }
 
-/* ====== AUTOPLAY BACKGROUND MUSIC ON LOGIN ====== */
+/* ====== PREVENT AUTOPLAY BEFORE LOGIN ====== */
 window.addEventListener('DOMContentLoaded',()=>{
-  document.getElementById('bgMusic').pause(); // prevent autoplay before login
+  document.getElementById('mainPage').classList.add('hidden');
+  document.getElementById('storyPopup').classList.add('hidden');
+  document.getElementById('bgMusic').pause();
 });
 </script>
 </body>
