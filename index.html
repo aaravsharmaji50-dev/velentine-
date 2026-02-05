@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For My Cutie 💝</title>
 <style>
-/* ====== BASE ====== */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 body{background:linear-gradient(135deg,#ff4b6e,#ff8fb3,#ffd1dc);color:white;overflow-x:hidden;min-height:100vh;text-align:center;position:relative;}
 .container{max-width:900px;margin:auto;padding:25px;position:relative;z-index:5;}
@@ -41,7 +40,7 @@ input{padding:12px;width:80%;border-radius:12px;border:none;font-size:16px;margi
 <body>
 
 <!-- Background Music -->
-<audio id="bgMusic" autoplay loop>
+<audio id="bgMusic" loop>
 <source src="midnightcall.mp3" type="audio/mpeg">
 </audio>
 
@@ -90,46 +89,41 @@ input{padding:12px;width:80%;border-radius:12px;border:none;font-size:16px;margi
 <img src="stickers_kiss.gif" class="sticker">
 <p>Click any chat screenshot to flip & read my feelings 💗</p>
 <div class="gallery">
-
+<!-- Flip cards -->
 <div class="flip-card" onclick="flipCard(this,0)">
 <div class="flip-card-inner">
 <div class="flip-card-front"><img src="chats1.jpg"></div>
 <div class="flip-card-back"><img src="stickers_blush.gif" class="sticker"><p></p></div>
 </div>
 </div>
-
 <div class="flip-card" onclick="flipCard(this,1)">
 <div class="flip-card-inner">
 <div class="flip-card-front"><img src="chats2.jpg"></div>
 <div class="flip-card-back"><img src="stickers_love.gif" class="sticker"><p></p></div>
 </div>
 </div>
-
 <div class="flip-card" onclick="flipCard(this,2)">
 <div class="flip-card-inner">
 <div class="flip-card-front"><img src="chats3.jpg"></div>
 <div class="flip-card-back"><img src="stickers_hug.gif" class="sticker"><p></p></div>
 </div>
 </div>
-
 <div class="flip-card" onclick="flipCard(this,3)">
 <div class="flip-card-inner">
 <div class="flip-card-front"><img src="chats4.jpg"></div>
 <div class="flip-card-back"><img src="stickers_kiss.gif" class="sticker"><p></p></div>
 </div>
 </div>
-
 <div class="flip-card" onclick="flipCard(this,4)">
 <div class="flip-card-inner">
 <div class="flip-card-front"><img src="chats5.jpg"></div>
 <div class="flip-card-back"><img src="stickers_cry.gif" class="sticker"><p></p></div>
 </div>
 </div>
-
 </div>
 </div>
 
-<!-- LAST MESSAGE PAGE -->
+<!-- LAST MESSAGE -->
 <div class="card">
 <h2>💌 My Last Message for You 💌</h2>
 <img src="stickers_blush.gif" class="sticker">
@@ -167,8 +161,7 @@ function checkPassword(){
   if(input===password){
     document.getElementById("loginPage").classList.add("hidden");
     document.getElementById("mainPage").classList.remove("hidden");
-    let bg = document.getElementById("bgMusic");
-    bg.play().catch(()=>{});
+    document.getElementById("bgMusic").play().catch(()=>{});
   }else{
     document.getElementById("errorMsg").innerText="Wrong password cutie 😭💔 try again!";
   }
@@ -213,6 +206,7 @@ let storySteps=[
 ];
 let currentStory=0;
 function openPopup(id){
+  currentStory=0; // reset story step
   document.getElementById(id).classList.remove("hidden");
   document.getElementById("storyText").innerText = storySteps[currentStory];
 }
@@ -221,7 +215,7 @@ function closePopup(id){
 }
 function nextStory(){
   currentStory++;
-  if(currentStory>=storySteps.length) currentStory = 0;
+  if(currentStory>=storySteps.length) currentStory=0;
   document.getElementById("storyText").innerText = storySteps[currentStory];
 }
 
@@ -240,7 +234,6 @@ function noClicked(){
   else{msg="😭😭 Mar jaunga apke binaaaaa 💔💔 (ab YES krdo naaaaa)"; sticker.src="stickers_cry.gif";}
   document.getElementById("valMsg").innerText=msg;sticker.classList.remove("hidden");
 }
-/* ====== CONFETTI ====== */
 function confettiBurst(){
 for(let i=0;i<150;i++){
 let c=document.createElement("div");c.classList.add("confetti");
@@ -252,6 +245,11 @@ c.animate([{transform:`translateY(0px)`},{transform:`translateY(${window.innerHe
 setTimeout(()=>c.remove(),fallTime*1000);
 }
 }
+
+/* ====== AUTOPLAY BACKGROUND MUSIC ON LOGIN ====== */
+window.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('bgMusic').pause(); // prevent autoplay before login
+});
 </script>
 </body>
 </html>
